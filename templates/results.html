@@ -3,63 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>News Digest Results</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-
-        a {
-            text-decoration: none;
-            color: blue;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        .date-category {
-            font-style: italic;
-            color: #555;
-        }
-
-        .title-link {
-            color: #000;
-            font-size: 24px;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Your Personalized News Digest</h1>
-    {% if news_items %}
-    <ul>
-        {% for item in news_items %}
-        <li>
-            <div class="date-category">{{ item.date }} - {{ item.category }}</div>
-            <a href="{{ item.link }}" class="title-link"><h2>{{ item.title }}</h2></a>
-            <p>{{ item.summary }}</p>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No news articles found. Please try different interests.</p>
-    {% endif %}
-    <a href="/">Back to Home</a>
+    <div class="container">
+        <h1>Your Personalized News Digest</h1>
+        {% if news_items %}
+        <div class="articles">
+            {% for item in news_items %}
+            <div class="article">
+                <div class="text">
+                    <div class="meta-info">
+                        <span class="category">{{ item.category }}</span> |
+                        <span class="date">{{ item.date }}</span>
+                    </div>
+                    <a href="{{ item.link }}" class="title"><h2>{{ item.title }}</h2></a>
+                    <p class="summary">{{ item.summary }}</p>
+                </div>
+                <div class="image">
+                    <img src="{{ item.image }}" alt="News Image" style="width:100%; height: auto;">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No news articles found. Please try different interests.</p>
+        {% endif %}
+        <a href="/">Back to Home</a>
+    </div>
 </body>
 </html>
