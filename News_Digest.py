@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template
-from scraper import fetch_news  # Make sure it's using the updated version
+# News_Digest.py
+from flask import Flask, render_template, request, jsonify
+from selenium_scraper import scrape_npr_news  # Import the Selenium scraper function
 
 app = Flask(__name__)
 
@@ -9,9 +10,9 @@ def home():
 
 @app.route('/generate', methods=['POST'])
 def generate_digest():
-    interests = request.form['interests']
-    news_items = fetch_news(interests)
-    return render_template('results.html', news_items=news_items)
+    interest = request.form.get('interests', '')  # Capture the interest from the form
+    news_items = scrape_npr_news(interest)  # Pass the interest to the Selenium scraper
+    return render_template('results.html', news_items=news_items)  # Render results with the scraped data
 
 if __name__ == '__main__':
     app.run(debug=True)
