@@ -16,12 +16,14 @@ def fetch_news(interest=''):  # Accept an interest parameter
             category = article.find('h3', class_='slug').text.strip() if article.find('h3', class_='slug') else 'No Category Available'
             link = article.find('h2', class_='title').find('a')['href'] if article.find('h2', class_='title') else 'No Link Available'
             date = article.find('time').text.strip() if article.find('time') else 'No Date Available'
+            image_url = article.find('img')['src'] if article.find('img') else 'default-image-url.jpg'
             
             news_list.append({
                 'title': title,
                 'summary': summary,
                 'category': category,
                 'link': link,
-                'date': date
+                'date': date,
+                'image': image_url
             })
     return news_list

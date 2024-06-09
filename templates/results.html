@@ -12,7 +12,8 @@
         <div class="articles">
             {% for item in news_items %}
             <div class="article">
-                <div class="text">
+                <div class="text-content">
+                    <!-- Updated class name -->
                     <div class="meta-info">
                         <span class="category">{{ item.category }}</span> |
                         <span class="date">{{ item.date }}</span>
@@ -20,8 +21,9 @@
                     <a href="{{ item.link }}" class="title"><h2>{{ item.title }}</h2></a>
                     <p class="summary">{{ item.summary }}</p>
                 </div>
-                <div class="image">
-                    <img src="{{ item.image }}" alt="News Image" style="width:100%; height: auto;">
+                <div class="image-content">
+                    <!-- Updated class name -->
+                    <img src="{{ item.image }}" alt="News Image" class="news-image"> <!-- Added class and removed inline styles -->
                 </div>
             </div>
             {% endfor %}

@@ -1,8 +1,9 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #f4f4f4;
+    color: #333333;
 }
 
 .container {
@@ -10,6 +11,7 @@ body {
     margin: auto;
     background-color: #fff;
     padding: 20px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
 .articles {
@@ -19,30 +21,35 @@ body {
 
 .article {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
 }
 
-.text {
-    flex: 3;
-}
-
-.image {
+.text-content {
     flex: 1;
+    padding-right: 20px;
+}
+
+.image-content {
+    flex-basis: 250px; /* fixed width for image */
     padding-left: 20px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
+    .image-content img {
+        width: 100%; /* Full width of the container */
+        height: auto;
+        border-radius: 4px;
+    }
 
 .title {
+    font-size: 18px;
+    font-weight: bold;
     color: #0071bc;
     text-decoration: none;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
     .title:hover {
@@ -50,13 +57,15 @@ img {
     }
 
 .meta-info {
-    font-size: 0.85em;
-    color: #666;
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 5px;
 }
 
 .summary {
-    font-size: 1em;
-    color: #333;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.4;
 }
 
 a {
@@ -67,11 +76,31 @@ a {
         text-decoration: underline;
     }
 
-.category, .date {
-    color: #666;
+.date-category {
+    color: #666666;
+    font-size: 14px;
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+    color: #0071bc;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .article {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-content, .image-content {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .image-content {
+        padding-top: 20px;
+    }
 }
