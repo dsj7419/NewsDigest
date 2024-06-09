@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Digest Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .date-category {
+            font-style: italic;
+            color: #555;
+        }
+
+        .title-link {
+            color: #000;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Personalized News Digest</h1>
+    {% if news_items %}
+    <ul>
+        {% for item in news_items %}
+        <li>
+            <div class="date-category">{{ item.date }} - {{ item.category }}</div>
+            <a href="{{ item.link }}" class="title-link"><h2>{{ item.title }}</h2></a>
+            <p>{{ item.summary }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No news articles found. Please try different interests.</p>
+    {% endif %}
+    <a href="/">Back to Home</a>
+</body>
+</html>
